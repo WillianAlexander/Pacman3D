@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
+</head>
+<body>
+	<a-scene>
+		<a-assets>
+			<img id="ladrillo1" src="imagen/ladrillo2.jpg">
+			<img id="sky" src="imagen/back360darkside.jpg">
+		</a-assets>
+
+		<a-sky src="#sky"></a-sky>
+
+		<a-camera position="0 0 8">			
+		</a-camera>
+
+		<a-sound src="url(audio/fear.mp3)" autoplay="true" position="0 2 5" volume=1 ></a-sound>
+
+	</a-scene>
+	<script type="text/javascript">
+		var mat12= [1,2,3,4];
+		var mat=[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+				 [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+				 [1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],
+				 [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+ 				 [1,0,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,0,1],
+				 [1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1],
+				 [1,1,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,1,1],
+				 [0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0],
+				 [1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1],
+                 [0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0],
+                 [1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1],
+                 [0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0],
+                 [1,1,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,1,1],
+                 [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+                 [1,0,1,1,0,1,1,1,0,1,0,1,1,1,0,1,1,0,1],
+                 [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
+                 [1,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1],
+                 [1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1],
+                 [1,0,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,0,1],
+                 [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+                 [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]];
+		
+		var ele=document.querySelector("a-scene");
+		if(ele.hasLoaded){
+			ejecutar();
+
+		}else{
+			ele.addEventListener('loaded', ejecutar);
+		}
+		function ejecutar(argument) {
+			// body...
+			//var box=document.querySelector("a-box");
+			//box.setAttribute("color","red");
+			crearMarco();
+
+		}
+		function crearMarco(){
+			var eletem=document.querySelector("a-scene");
+			for (var i = 0; i < mat.length; i++) {
+				for (var j = 0; j < mat[i].length; j++) {
+					
+					//el primero
+					if(mat[i][j]==1){
+						var boxtem= document.createElement("a-box");
+						eletem.appendChild(boxtem);
+						var posTem={x:j-9,y:0, z:i-10};
+						boxtem.setAttribute("position",posTem);
+						boxtem.setAttribute("height","2");
+
+						boxtem.setAttribute("color","#445675");//src="#cesped"
+						//boxtem.setAttribute("src","#ladrillo1"); upload to server
+					}
+				}
+			}
+			
+		}
+		
+	</script>
+</body>
+
+</html>
